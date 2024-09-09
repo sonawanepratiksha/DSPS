@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int stack[20];
+int top = -1;
+
+void push(int x); // Declaration of push function
+void pop();
+int deci_bin(int num);
+
+int main() {
+    int num;
+    printf("Enter the number: ");
+    scanf("%d", &num);
+    deci_bin(num);
+    return 0;
+}
+
+int deci_bin(int num) {
+    if (num == 0) {
+        printf("Binary equivalent: 0");
+        return 0;
+    }
+    while (num > 0) {
+        int rem = num % 2;
+        push(rem);
+        num = num / 2;
+    }
+    printf("Binary equivalent: ");
+    while (top != -1) {
+        printf("%d", stack[top]);
+        pop();
+    }
+    return 0;
+}
+
+void push(int x) { // Definition of push function
+    top++;
+    stack[top] = x;
+}
+
+void pop() {
+    if (top <= -1) {
+        printf("Stack is underflow");
+    }
+    top--;
+}
+0 comments on commit f54489c
+@sonawanepratiksha
+Comment
